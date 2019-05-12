@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from './components/Card';
 import './App.css';
 
 const data = {
@@ -75,23 +76,11 @@ class App extends React.Component {
          {data.palettes.map((item, index) => {
            return (
             <li className="pallete" key={`p${index}`}>
-              <div className="card">
-                <h2 className="card__name">{item.name}</h2>
-                <ul className="card__colors">
-                  {item.colors.map((color,colorIndex) => {
-                    return (
-                      <li 
-                        className="card__color" 
-                        key={colorIndex}
-                        style={{backgroundColor: `#${color}`}}
-                        onClick={this.handleColorClick}
-                      >
-                        {color}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+              <Card 
+                name={item.name} 
+                colors={item.colors} 
+                colorAction={this.handleColorClick} 
+              />
             </li>
            );
          })}
